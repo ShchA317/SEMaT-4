@@ -1,7 +1,0 @@
-package monitoring;
-
-public interface MissPercentageMXBean {
-    void calculatePercentage(int count, int hit);
-
-    double getMissPercentage();
-}

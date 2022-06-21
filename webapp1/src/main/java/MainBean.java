@@ -1,5 +1,8 @@
-import domain.Point;
+    import domain.Point;
 
+import javax.faces.annotation.ManagedProperty;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,11 +11,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-//@ManagedBean(name = "mainBean")
-//@SessionScoped
+@ManagedBean(name = "mainBean", eager = true)
+@SessionScoped
 public class MainBean implements Serializable {
     private static final long serialVersionUID = 4L;
     private EntityManagerFactory managerFactory;
+
+    @ManagedProperty(value="#{countBean}")
+    private CountBean countBean;
 
     private EntityManager manager;
     private List<Point> points = new ArrayList<>();
@@ -36,6 +42,17 @@ public class MainBean implements Serializable {
                 manager.persist(point);
                 points.add(point);
                 transaction.commit();
+
+                if(countBean != null){
+                    countBean.add_point();
+                    if(!point.isCoordsStatus()){
+                        countBean.add_red_point();
+                    }
+                    System.out.println("всего точек в этой сессии: " + countBean.getNumber_of_points());
+                    System.out.println("красных точек в этой сессии: " + countBean.getNumber_of_red_points());
+                } else {
+                    System.out.println("почему он null?");
+                }
 
                 transaction.begin();
                 TypedQuery<Point> query = manager.createQuery("SELECT p FROM Point p WHERE p.owner = :owner", Point.class);
@@ -86,5 +103,13 @@ public class MainBean implements Serializable {
                 ", manager=" + manager +
                 ", points=" + points +
                 '}';
+    }
+
+    public CountBean getCountBean() {
+        return countBean;
+    }
+
+    public void setCountBean(CountBean countBean) {
+        this.countBean = countBean;
     }
 }

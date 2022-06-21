@@ -4,6 +4,7 @@
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+<!--
     <navigation-rule>
         <from-view-id>../start_page.xhtml</from-view-id>
         <navigation-case>
@@ -12,9 +13,16 @@
         </navigation-case>
     </navigation-rule>
 
-   <managed-bean>
+    <managed-bean>
         <managed-bean-name>mainBean</managed-bean-name>
         <managed-bean-class>MainBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
-   </managed-bean>
+    </managed-bean>
+-->
+
+    <managed-bean>
+        <managed-bean-name>countBean</managed-bean-name>
+        <managed-bean-class>CountBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
 </faces-config>
