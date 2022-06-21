@@ -1,9 +1,9 @@
-    import domain.Point;
+import domain.Point;
 
-import javax.faces.annotation.ManagedProperty;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ public class MainBean implements Serializable {
     private static final long serialVersionUID = 4L;
     private EntityManagerFactory managerFactory;
 
-    @ManagedProperty(value="#{countBean}")
+    @Inject
     private CountBean countBean;
 
     private EntityManager manager;

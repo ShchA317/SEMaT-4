@@ -1,6 +1,8 @@
 import javax.enterprise.context.SessionScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 import java.io.Serializable;
+import java.util.Map;
 
 @ManagedBean(name = "countBean", eager = true)
 @SessionScoped
@@ -11,6 +13,18 @@ public class CountBean implements Serializable {
     public CountBean(){
         number_of_points = 0;
         number_of_red_points = 0;
+    }
+
+    public void count(){
+        System.out.println("посчитаем");
+
+        FacesContext facesContext = FacesContext.getCurrentInstance();
+        Map<String, String> params = facesContext.getExternalContext().getRequestParameterMap();
+
+        if(params.get("R-field") != null){
+            System.out.println(params.get("R-field"));
+            double r = Double.parseDouble(params.get("R-field"));
+        }
     }
 
     public void add_point(){
