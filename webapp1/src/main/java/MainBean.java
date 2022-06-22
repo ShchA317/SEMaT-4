@@ -1,9 +1,10 @@
-import domain.Point;
+import neegroom.domain.Point;
+import neegroom.impl.DistanceBetweenTwoPoints;
+import neegroom.impl.PointCounter;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.inject.Inject;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -16,9 +17,6 @@ import java.util.Objects;
 public class MainBean implements Serializable {
     private static final long serialVersionUID = 4L;
     private EntityManagerFactory managerFactory;
-
-    @Inject
-    private CountBean countBean;
 
     private EntityManager manager;
     private List<Point> points = new ArrayList<>();
@@ -43,27 +41,21 @@ public class MainBean implements Serializable {
                 points.add(point);
                 transaction.commit();
 
-                if(countBean != null){
-                    countBean.add_point();
-                    if(!point.isCoordsStatus()){
-                        countBean.add_red_point();
-                    }
-                    System.out.println("всего точек в этой сессии: " + countBean.getNumber_of_points());
-                    System.out.println("красных точек в этой сессии: " + countBean.getNumber_of_red_points());
-                } else {
-                    System.out.println("почему он null?");
-                }
-
                 transaction.begin();
                 TypedQuery<Point> query = manager.createQuery("SELECT p FROM Point p WHERE p.owner = :owner", Point.class);
                 points = query.setParameter("owner", facesContext.getExternalContext().getSessionId(true)).getResultList();
                 transaction.commit();
+
+                DistanceBetweenTwoPoints.getInstance().setLastPoint(point);
+                PointCounter.getInstance().check(point.isCoordsStatus());
+                DistanceBetweenTwoPoints.getInstance().calculateDistanceBetweenTwoLastPoints();
             } else {
                 System.out.println("Пришел null");
                 if(params.get("X-field") == null) System.out.println("X-field = null");
                 if(params.get("Y-field") == null) System.out.println("Y-field = null");
                 if(params.get("R-field") == null) System.out.println("R-field = null");
             }
+
 
         } finally {
             if(manager != null)
@@ -103,13 +95,5 @@ public class MainBean implements Serializable {
                 ", manager=" + manager +
                 ", points=" + points +
                 '}';
-    }
-
-    public CountBean getCountBean() {
-        return countBean;
-    }
-
-    public void setCountBean(CountBean countBean) {
-        this.countBean = countBean;
     }
 }

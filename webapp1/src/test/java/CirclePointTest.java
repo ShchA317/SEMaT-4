@@ -1,7 +1,7 @@
-import org.junit.Test;
-import org.junit.Before; 
+import neegroom.domain.CirclePoint;
 import org.junit.After;
-import domain.*;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

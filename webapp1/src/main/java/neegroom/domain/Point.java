@@ -1,4 +1,4 @@
-package domain;
+package neegroom.domain;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;

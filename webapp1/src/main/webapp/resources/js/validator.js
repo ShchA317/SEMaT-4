@@ -2,6 +2,23 @@
 
 let x, y, r;
 
+function commandLinkClick(val) {
+    let input = document.querySelector(".form-radius__wrapper > input")
+    if (input.value !== val) {
+        input.value = val;
+    }
+    displayMessage("R: " + val)
+}
+
+function displayMessage(text) {
+    let msg = document.querySelector('.message')
+    msg.innerHTML = text;
+    msg.style.visibility = 'visible'
+    setTimeout(() => {
+        msg.style.visibility = 'hidden'
+    }, 3000)
+}
+
 //Обновляет значение x в соответсвии с нажатой кнопкой, добавляет ей эффекты (подсветка и увеличение), убирая их для остальных кнопок группы.
 document.addEventListener("DOMContentLoaded", () => {
     let buttons = document.querySelectorAll("input[type=button]");
@@ -16,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             this.style.boxShadow = "0 0 40px 5px #f41c52";
             this.style.color = "white";
+           // sendRequest([{name:"R-field", value:r}]);
+
             redrawGraph();
         }
     }
