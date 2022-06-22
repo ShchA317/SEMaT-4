@@ -46,9 +46,12 @@ public class MainBean implements Serializable {
                 points = query.setParameter("owner", facesContext.getExternalContext().getSessionId(true)).getResultList();
                 transaction.commit();
 
-                DistanceBetweenTwoPoints.getInstance().setLastPoint(point);
-                PointCounter.getInstance().check(point.isCoordsStatus());
+                DistanceBetweenTwoPoints.getInstance().setLastPointX(point.getX());
+                DistanceBetweenTwoPoints.getInstance().setLastPointY(point.getY());
+                PointCounter.getInstance().check(point.isCoordsStatus(), point.getX(), point.getY(), point.getR());
                 DistanceBetweenTwoPoints.getInstance().calculateDistanceBetweenTwoLastPoints();
+
+
             } else {
                 System.out.println("Пришел null");
                 if(params.get("X-field") == null) System.out.println("X-field = null");

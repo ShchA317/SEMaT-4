@@ -12,8 +12,8 @@ import java.lang.management.ManagementFactory;
 
 @Slf4j
 public class JmxContextListener implements ServletContextListener {
-    private static final String pointCounterName = "neegroom.monitoring.impl:type=mbean,name=PointCounter";
-    private static final String distanceBetweenTwoPointsName = "neegroom.monitoring.impl:type=mbean,name=DistanceBetweenTwoPoints";
+    private static final String pointCounterName = "neegroom.service.impl:type=mbean,name=PointCounter";
+    private static final String distanceBetweenTwoPointsName = "neegroom.service.impl:type=mbean,name=DistanceBetweenTwoPoints";
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {

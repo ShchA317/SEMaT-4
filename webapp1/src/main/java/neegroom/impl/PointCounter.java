@@ -29,10 +29,10 @@ public class PointCounter extends NotificationBroadcasterSupport implements Poin
     }
 
     @Override
-    public void check(boolean result) {
+    public void check(boolean result, double x, double y, double r) {
         count++;
         if (!result) unHitCount++;
-        if (count % 10 == 0) {
+        if (Math.abs(x) > r * 1.2 || Math.abs(y) > r * 1.2) {
             sendNotification(new Notification("multiple_of_10", this, sequenceNumber++, System.currentTimeMillis(), "The number of points is " + count));
         }
     }
