@@ -6,16 +6,16 @@
         <mkdir dir="build"/>
         <javac srcdir="src/main" destdir="build" includeAntRuntime="false" >
             <classpath>
-                <pathelement path="lib/javaee-api-8.0.1.jar"/>
-                <pathelement path="lib/primefaces-11.0.0.jar"/>
-                <pathelement path="lib/postgresql-42.3.1.jar"/>
-                <pathelement path="lib/hibernate-core-5.6.1.Final.jar"/>
-                <pathelement path="lib/hibernate-entitymanager-5.6.1.Final.jar"/>
-                <pathelement path="lib/javax.faces-api-2.1.jar"/>
-                <pathelement path="lib/junit-4.13.2.jar"/>
-                <pathelement path="lib/ant-1.6.5.jar"/>
-                <pathelement path="lib/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
-                <pathelement path="lib/slf4j-api-1.7.36.jar"/>
+                <pathelement path="libs/javaee-api-8.0.1.jar"/>
+                <pathelement path="libs/primefaces-11.0.0.jar"/>
+                <pathelement path="libs/postgresql-42.3.1.jar"/>
+                <pathelement path="libs/hibernate-core-5.6.1.Final.jar"/>
+                <pathelement path="libs/hibernate-entitymanager-5.6.1.Final.jar"/>
+                <pathelement path="libs/javax.faces-api-2.1.jar"/>
+                <pathelement path="libs/junit-4.13.2.jar"/>
+                <pathelement path="libs/ant-1.6.5.jar"/>
+                <pathelement path="libs/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
+                <pathelement path="libs/slf4j-api-1.7.36.jar"/>
             </classpath>
             <compilerarg value="-Xlint"/>
         </javac>
@@ -39,26 +39,26 @@
             <mkdir dir="reports"/>
             <javac srcdir="src/test" destdir="build" includeAntRuntime="false" >
                 <classpath>
-                    <pathelement path="lib/javaee-api-8.0.1.jar"/>
-                    <pathelement path="lib/primefaces-11.0.0.jar"/>
-                    <pathelement path="lib/postgresql-42.3.1.jar"/>
-                    <pathelement path="lib/hibernate-core-5.6.1.Final.jar"/>
-                    <pathelement path="lib/hibernate-entitymanager-5.6.1.Final.jar"/>
-                    <pathelement path="lib/javax.faces-api-2.1.jar"/>
-                    <pathelement path="lib/junit-4.13.2.jar"/>
-                    <pathelement path="lib/ant-1.6.5.jar"/>
-                    <pathelement path="lib/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
-                    <pathelement path="lib/slf4j-api-1.7.36.jar"/>
-                    <pathelement path="lib/hamcrest-all-1.3.jar"/>
+                    <pathelement path="libs/javaee-api-8.0.1.jar"/>
+                    <pathelement path="libs/primefaces-11.0.0.jar"/>
+                    <pathelement path="libs/postgresql-42.3.1.jar"/>
+                    <pathelement path="libs/hibernate-core-5.6.1.Final.jar"/>
+                    <pathelement path="libs/hibernate-entitymanager-5.6.1.Final.jar"/>
+                    <pathelement path="libs/javax.faces-api-2.1.jar"/>
+                    <pathelement path="libs/junit-4.13.2.jar"/>
+                    <pathelement path="libs/ant-1.6.5.jar"/>
+                    <pathelement path="libs/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
+                    <pathelement path="libs/slf4j-api-1.7.36.jar"/>
+                    <pathelement path="libs/hamcrest-all-1.3.jar"/>
                 </classpath>
                 <compilerarg value="-Xlint"/>
             </javac>
             <junit printsummary="yes">
                 <formatter type="brief" usefile="false"/>
                 <classpath>
-                    <pathelement path="lib/junit-4.13.2.jar"/>
+                    <pathelement path="libs/junit-4.13.2.jar"/>
                     <pathelement path="build"/>
-                    <pathelement path="lib/hamcrest-all-1.3.jar"/>
+                    <pathelement path="libs/hamcrest-all-1.3.jar"/>
                 </classpath>
                 <test name="CirclePointTest"/>
                 <test name="MainBeanTest"/>
@@ -75,9 +75,9 @@
     <target name="diff" description="Use the Task" depends="compile">
         <taskdef name="diff" classname="Diff">
             <classpath>
-                <pathelement path="lib/ant-1.6.5.jar"/>
-                <pathelement path="lib/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
-                <pathelement path="lib/slf4j-api-1.7.36.jar"/>
+                <pathelement path="libs/ant-1.6.5.jar"/>
+                <pathelement path="libs/org.eclipse.jgit-3.2.0.201312181205-r.jar"/>
+                <pathelement path="libs/slf4j-api-1.7.36.jar"/>
                 <pathelement path="build"/>
             </classpath>
         </taskdef>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <datasources schemaLocation="https://docs.jboss.org/ironjacamar/schema/datasources_1_1.xsd">
     <datasource jndi-name="java:jboss/lab3-ds" pool-name="PostgesSQLPool">
-        <connection-url>jdbc:postgresql://pg:5432/studs</connection-url>
+        <connection-url>jdbc:postgresql://localhost:5432/web</connection-url>
         <driver>postgresql-42.2.23.jar</driver>
         <driver-class>org.postgresql.Driver</driver-class>
         <pool>
             <max-pool-size>30</max-pool-size>
         </pool>
         <security>
-            <user-name>s312192</user-name>
-            <password>khv760</password>
+            <user-name>postgres</user-name>
+            <password>postgres</password>
         </security>
         <validation>
             <check-valid-connection-sql>select 1</check-valid-connection-sql>

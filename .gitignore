@@ -1,8 +1,4 @@
 .idea/
-target
-lib
-reports
-
 .gitignore
 /lib/
 /build/
