@@ -5,3 +5,5 @@ reports
 
 .gitignore
 /lib/
+/build/
+/target/
