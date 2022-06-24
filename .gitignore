@@ -1,6 +1,6 @@
 .gitignore
 .idea/
 build
-target/
-lib/
+target
+lib
 reports
